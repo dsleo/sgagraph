@@ -1,0 +1,73 @@
+{
+    "graph": {
+        "arxiv_id": "example",
+        "extractor_mode": "demo",
+        "stats": {
+            "node_count": 2,
+            "edge_count": 1
+        },
+        "nodes": [
+            {
+                "id": "def-1",
+                "type": "definition",
+                "content": "A $\\\\mathbb{Z}$-module is an abelian group.",
+                "content_preview": "A $\\\\mathbb{Z}$-module is an abelian group.",
+                "prerequisites_preview": "",
+                "display_name": "Definition",
+                "label": "def:module",
+                "position": {
+                    "line_start": 1
+                },
+                "references": [],
+                "proof": null
+            },
+            {
+                "id": "thm-1",
+                "type": "theorem",
+                "content": "Let $M$ be a $\\\\mathbb{Z}$-module. Then $M$ is an abelian group.",
+                "content_preview": "Let $M$ be a $\\\\mathbb{Z}$-module. Then $M$ is an abelian group.",
+                "prerequisites_preview": "<b>$\\\\mathbb{Z}$-module</b>: an abelian group",
+                "display_name": "Theorem",
+                "label": "thm:example",
+                "position": {
+                    "line_start": 2
+                },
+                "references": [],
+                "proof": "Trivial."
+            }
+        ],
+        "edges": [
+            {
+                "source": "def-1",
+                "target": "thm-1",
+                "context": null,
+                "reference_type": null,
+                "dependency_type": "used_in",
+                "dependency": "Theorem uses the definition.",
+                "type": "used_in"
+            }
+        ]
+    },
+    "definition_bank": {
+        "z-module": {
+            "term": "$\\\\mathbb{Z}$-module",
+            "aliases": [
+                "module"
+            ],
+            "definition_text": "An abelian group.",
+            "source_artifact_id": "def-1",
+            "dependencies": []
+        }
+    },
+    "artifact_to_terms_map": {
+        "def-1": [
+            "$\\\\mathbb{Z}$-module"
+        ],
+        "thm-1": [
+            "$\\\\mathbb{Z}$-module"
+        ]
+    },
+    "latex_macros": {
+        "Z": "{\\\\mathbb{Z}}"
+    }
+}

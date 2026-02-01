@@ -1,0 +1,201 @@
+@import "tailwindcss";
+
+:root {
+  /* Dark theme (SGA / ArxiGraph style) */
+  --background: #121212;
+  --foreground: #e0e0e0;
+  --surface1: #1a1a1a;
+  --surface2: #242424;
+  --primary-text: #e0e0e0;
+  --secondary-text: #aaaaaa;
+  --accent: #ffdd57;
+  --accent-hover: #ffc800;
+  --border-color: #333333;
+}
+
+/* NOTE:
+   `@theme` is a Tailwind v4 directive. Some editors / tooling will flag it as
+   "Unknown at rule" even though Tailwind can handle it.
+
+   We currently don't rely on these tokens, so we keep compatibility by
+   expressing them as regular CSS variables.
+*/
+:root {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Use a single consistent dark theme (Constellations style) */
+
+body {
+  background: var(--background);
+  color: var(--primary-text);
+  font-family: 'STIX Two Text', 'Source Serif 4', Georgia, serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'STIX Two Text', 'Source Serif 4', Georgia, serif;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  background-color: var(--surface2);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: var(--accent);
+}
+
+/* Links inside the top overlay title */
+.graph-title-link {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.graph-title-link:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+.graph-info-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: var(--surface2);
+  color: var(--secondary-text);
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.graph-info-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.graph-info-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+}
+
+.graph-info-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.graph-info-modal__card {
+  position: absolute;
+  left: 50%;
+  top: 22px;
+  transform: translateX(-50%);
+  width: min(680px, calc(100vw - 32px));
+  background: var(--surface1);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+  pointer-events: auto;
+}
+
+.graph-info-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.graph-info-modal__title {
+  font-weight: 900;
+  color: var(--accent);
+}
+
+.graph-info-modal__close {
+  border: none;
+  background: none;
+  color: var(--secondary-text);
+  font-size: 22px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.graph-info-modal__close:hover {
+  color: var(--accent);
+}
+
+.graph-info-modal__body {
+  padding: 12px 14px 16px;
+  color: var(--primary-text);
+  font-family: 'STIX Two Text', 'Source Serif 4', Georgia, serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.graph-info-modal__body a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.graph-info-modal__body a:hover {
+  color: var(--accent-hover);
+}
+
+.graph-info-modal__body p {
+  margin: 10px 0;
+}
+
+.graph-info-modal__body ul {
+  margin: 10px 0;
+  padding-left: 0;
+  list-style: disc;
+  list-style-position: inside;
+}
+
+.graph-info-modal__body li {
+  margin: 8px 0;
+}
+
+.graph-info-modal__body li::marker {
+  color: var(--accent);
+}
+
+.paper-link-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: var(--surface2);
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+
+.paper-link-btn:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.paper-link-btn img {
+  filter: invert(0.92);
+  opacity: 0.9;
+}
+
+/* Constellations-inspired graph UI */
+/* NOTE: We import the Constellations global CSS from `src/app/layout.tsx`
+   instead of using a CSS `@import`, because Turbopack's CSS resolver can
+   mis-handle relative `@import` paths in monorepos (multiple package.json).
+*/
